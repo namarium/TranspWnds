@@ -6,10 +6,8 @@ To build "TranspWnds" https://code.google.com/archive/p/transpwnds/
 
 下記の都合で、公開されているソースがそのままでは扱いづらいので整備します.
 - 文字コードが「Cyrillic(Windows 1251)」
-  - 日本語環境のVisual Studioでは,「Shift_JIS」と判定されてしまいます.
   - → 「UTF-8」に変換します.
 - 「ULLib」が別管理
-  - VS2008用のソリューションが提供されていますが,依存関係のあるライブラリが同梱されていないので,別途設定が必要です.
   - → 同梱します.
 
 ## ビルド環境
