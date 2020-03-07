@@ -22,7 +22,6 @@ To build "TranspWnds" https://code.google.com/archive/p/transpwnds/
 
 ## ライセンス
 「TranspWnds」「ULLib」共に「LGPL-3.0」です.  
-各フォルダの「COPYING.LESSER」が、配布元のデータです.
 
 # リンク
 - transpwnds: https://code.google.com/archive/p/transpwnds/
