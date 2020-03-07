@@ -1,0 +1,238 @@
+﻿2.0.0 <05.08.2008>
+	Старт с 2.0.0
+
+2.1.0 <06.08.2008>
+	1 добавлены некоторые классовые функции
+		ULWnds::CULWnd::SetProp
+		ULWnds::CULWnd::GetProp
+		ULGDI::ULDC::CULDC::FillRect
+		ULGDI::ULDC::CULDC::FillRgn
+		ULWnds::CULWnd::CloseWindow
+
+	2написан класс темы для диалога ULWnds::ULThemeClient
+
+2.1.1 <07.08.2008>
+	1 переконфигурирована справка
+	2 исправлены коментарии и регистры имен фаилов
+	3 перекомпилина справка
+	4 ULStates::CULLogFile::SaveLog - неверно искал нужную метку. исправлено
+	5 ULStates::CULLogFile::SaveLog - исправлен перенос между сохраняемыми строками
+	6 ULStates::CULLogFile::CULLogFile() - при юникоде записывает в заголовок метку little endian
+
+2.1.2 <20.08.2008>
+	1 ULWnds::CULThemeClient::Create - если при создании кнопок закрыть,свернуть существуют контролы с таким именем,
+		то создаваемые не отображаются. Добавлено условие ошибки.
+	2 удалена папка ULLib/lib
+	3 сделано нормальное описание ULGDI::ULGDIObj::CULRgn::CombineRgn(...)
+	4 добавлена перегрузка
+		CULWnd::GetMenu
+		CULMenu::GetMenuString
+		CULMenu::GetMenuItemCount
+		CULMenu::InsertMenu
+	5 Поменнено название у UL_DECLARE_DLLMAIN на UL_DECLARE_DLLMAIN()
+	6 Добавлена приставка On к 
+		BOOL CULDllApp::ProcessAttach(HINSTANCE hInstance)
+		BOOL CULDllApp::ProcessDetach()
+		BOOL CULDllApp::ThreadAttach()
+		BOOL CULDllApp::ThreadDetach()
+	7 исправлено везде GetModuleHandle на ULGetResourceHandle
+	8 исправлено
+		CreateDialogParam(GetModuleHandle(NULL), (LPCTSTR)idTempl на MAKEINTRESOURCE, m_hParentWnd, (DLGPROC)WndProc,LPARAM(this));
+	9 сделано в ULLib ULOther::ULSet/ULGetResourceHandle
+	10 обновлена справка
+2.2.0 <31.08.2008>
+	1 добавлена реализация 	CULWnd::GetWindow
+				CULWnd::SetClassLong
+				CULMenu::GetMenuItemID
+				CULRebar::GetBandCount
+				CULRebar::GetBandInfo
+				CULRebar::SetBandInfo
+	2 исправлено: ребар для Samples\smplULFrameWnd (когда ребар слева, а комбик справа)				
+	3 исключены hlp/html/*
+	4 при заершении CULThread::ThreadProc сделан сброс флага работы потока, а установка перенесена из конструктора в CULThread::Create
+	5 исправлено в CULToolBar::AddButton строку tb.hInst=(nID>IDB_HIST_LARGE_COLOR)?NULL:hInst; на tb.hInst=(nID>IDB_HIST_LARGE_COLOR)?ULOther::ULGetResourceHandle():hInst;
+	6 исправлен m_pInfoButtons[i].szToolTip. то есть сделать размерный массив и в него копирование строки
+	7 исправлено ///\param dwStyleEx - расштренный стиль эдита в CULHotKey. у едита в описании похоже тоже самое
+	8 включен ULRes.h в заголовочные ULOther.h
+	9 исправлена HINSTANCE ULSetResourceHandle(HINSTANCE hNewRes)
+	10 добавлено в ULOther::CULFileVersionInfo определение CompanyName
+	11 сделан класс CULRebarCtrl. Пока только Docked. Тестирована только в позиции сверху
+	12 исправлен вариант добавления в тулбар текстовой кнопки
+	13 доработана CULToolBar::OnDropDown(LPARAM lParam). то есть сделано задание хендло выпадающего меню
+	14 добавлены классы 
+		ULWnds::ULControls::CULListCtrl
+		ULWnds::ULControls::CULComboBox
+2.2.1 <04.09.2008>
+	1 исправлены коменты
+	2 исправлена CULRebar::InsertBand
+	3 исправлена CULToolBar::DeleteButton(int nButton). было некоректное копирование
+	4 добавлена 	CULRebar::MinimizeBand
+			CULRebar::MaximizeBand
+			CULToolBar::GetButton
+			CULToolBar::CULWnd(HWND hwnd)
+	5 добавлен фаил аналогичный ULLib.h фаил ULLibNS.h, но с прописыванием пространств имен
+
+2.2.2 <07.09.2008>
+	1 исправлена CULComboBox::Create. была ошибка в классе окна
+	2 Добавлены	CULEdit::SetReadOnly
+			CULListCtrl::HitTest
+			CULListCtrl::SetItemData
+			CULListCtrl::GetItemData
+	3 исправлена CULMessageMap::AddNotify.  было неверное приведение типов
+
+2.2.3 <05.10.2008>
+	1 исправлен ряд багов
+	2 Добавлены	CULListCtrl::GetFirstSelectedItemPosition
+			CULListCtrl::GetNextSelectedItemPosition
+			CULListCtrl::GetItemText
+			CULListCtrl::DeleteItem
+			CULComboBox::ResetContent
+	3 исправлена CULToolBar::InsertButton. в ней убрана последняя memcpy, 
+		которая приводила к некоректному копированию объектов. и инициализация tmppInfoButtons
+	4 CPropertyPage::OnInitDialog добавлен модификатор virtual
+	5 сделан прикручивание к классу Propertysheet окна(там возникала ошибка, когда сабкласишь в режиме TAB)
+	6 изменен родитель СULPropertysheet с CULWnd на CULSubClass
+	7 СULPropertysheet::m_phPropSheetPage перенесена в секцию protected
+	8 изменено именование фаила в CULLogFile
+	9 добавлен класс ULOther::CStrTable. для ускорения загрузки строк из StringTable
+
+2.2.4 <13.10.2008>
+	1 исправлена во всей либе ModifySyle(Ex) на ModifyStyle(Ex)
+	2 добавлены реализации
+		BOOL CULListCtrl::GetItemRect(int nItem,LPRECT lpRect,UINT nCode);
+		BOOL CULListCtrl::GetSubItemRect(int iItem, int iSubItem, int nArea, RECT* lpRect);
+		HFONT CULWnd::GetFont();
+		CULComboBox::ShowDropDown(BOOL fShowIt)
+		CULComboBox::GetComboBoxInfo(PCOMBOBOXINFO pcbi)
+		int CULListCtrl::GetSubItemCount()
+		int CULComboBox::GetCount()
+		CULListCtrl::SubItemHitTest
+		int CULComboBox::DeleteString(int nItem)
+		int CULComboBox::InsertString(int nItem,LPCTSTR pszStr);
+		BOOL CULWnd::IsWindowEnabled()
+		int CULComboBox::GetLBText(int nItem,LPTSTR pszText)
+		int CULComboBox::GetLBTextLen(int nItem)
+	3 исправлен тип строки с TCHAR* на LPCTSTR в CULEdit::Create
+	4 изменено ULGDI::ULGObjs::CULFont::CULFont(HFONT &hFont) на ULGDI::ULGObjs::CULFont::CULFont(HFONT hFont)
+	5 CStrTable -> CULStrTable
+	6 добавлена функция LRESULT CULWnd::OnMessage(UINT uMsg,WPARAM wParam,LPARAM lParam); в каждую WndProc
+		её вызов первичный, и ненулевой возврат пропускает остальные обработчики
+	7 в классе CULStrTable убран статический массив и добавлено поля этого же массива
+
+2.3.0 <27.11.2008>
+	1 добавлены реализации классов контролов
+		ULWnds::ULControls::CULDateTimePicker
+		ULWnds::ULControls::CULSplitter
+	2 добавлены реализации
+		CULMenu::EnableMenuItem(UINT uIDEnableItem,UINT uEnable)
+		CULMenu::CheckMenuItem(UINT uIDCheckItem,UINT uCheck)
+		CULToolBar::CheckButton(int idButton,BOOL fCheck)
+		CULToolBar::EnableButton(int idButton,BOOL fCheck)
+		CULToolBar::SetExtendedStyle(DWORD dwExStyle)
+		CULToolBar::GetExtendedStyle()
+		SIZE CULToolBar::GetButtonSize()
+		SIZE CULToolBar::GetBitmapSize()
+		HIMAGELIST CULToolBar::GetImageList()
+		HIMAGELIST CULToolBar::SetImageList(int iImageID,HIMAGELIST himlNew)
+
+	3 изменена функция CULRebar::Create. добавлен параметр идентификатор контрола
+	4 добавлена реализация шевронов на ребаре
+	5 добавлена перерисовка сплитера при изменении его размера
+	6 добавлено пространство имен ULListCtrlEx с реализацией класса расширенного лист контрола CULListCtrlEx
+		и возможных объектов(возможно добавление)
+		CItemText,CItemEdit,CItemComboBox,CItemDateTimePicker,CItemButton
+	7 добавлена реализация класса  ULOther::CULWaitCursor
+
+2.3.1 <29.11.2008>
+	1 в CULSplitter::Create(HWND hParentWnd,WORD wID,int x,int y,int cx,int cy,enSplitterOrientation SplitterOrientation,int nSplitterPos,BOOL fResize=TRUE);
+		добвлен параметр fResize для указания, возможности изменения размера
+	2 добавлена 
+		CULSplitter::SetSplitterPos(int nSplitterPos) для установки позиции сплитера
+		BOOL CULWnd::Create(LPCTSTR lpClassName,LPCTSTR lpWindowName,DWORD dwStyle,
+			int x,int y,int nWidth,int nHeight,HWND hWndParent,HMENU hMenu)
+	3 исправлена CULWnd::SetIcon, там wParam и lParam наоборот стояли
+
+
+2.3.2 <17.12.2008>
+	1 в классе CULPropSheet сделан член класса PROPSHEETHEADER m_psh; для более гибкой настройки диалога свойств
+	2 добавлено
+		BOOL CULProfileReg::IsAutoRun(LPCTSTR pcszName)
+	3 в PropSheetCBTProc событие хука для сабкласса изменено на HCBT_CREATEWND
+	4 исключены тулзы для работы с vcl чартом(если понадобятся, то откатываемся на нужную ревизию)
+	5 в конструкторе CULColorDlg сделана начальная инициализация набора цветов в белый
+	6 в CULMessageMap добавлены функции для очистки хранилищ сообщений (см.ClearXXX)
+	7 в CULCommDlg в конструкторе сделана очистка зранилищь сообщений для исключения конфликтов с обработчиками CULDlg
+
+2.3.3 <10.01.2009> 
+	1 добавлен класс диалога выбора шрифта CULFontDlg
+		CULStatic - обёртка для STATIC контрола
+	2 добавлено 
+		CULComboBox::FindString(int nItem,LPCTSTR pszStr)
+		BOOL CULDC::SaveDC()
+		BOOL CULDC::RestoreDC(int nSavedDC)
+		BOOL CULWnd::CreateEx(DWORD dwExStyle,LPCTSTR lpClassName,LPCTSTR lpWindowName,DWORD dwStyle,
+			int x,int y,int nWidth,int nHeight,HWND hWndParent,HMENU hMenu)
+		BOOL CULWnd::RegisterDefClass()
+		BOLL CULDC::Polygon(CONST POINT *lpPoints,int nCount)
+		HWND CULWnd::SetCapture()
+		ULONG_PTR CULWnd::GetClassLongPtr(LONG nIndex)
+		COLORREF CULDC::GetPixel(int nXPos,int nYPos)
+		BOOL CULDC::SetPixel(int nXPos,int nYPos,COLORREF crColor)
+		CULPen::CULPen(int fnPenStyle,int nWidth,COLORREF crColor)
+		BOOL CULDC::DrawIcon(int X,int Y,HICON hIcon)
+		BOOL CULListCtrlEx::DeleteAllItems()
+		BOOL CULListCtrlEx::DeleteItem(int nItem)
+	3 перенесены все inline функции ULWnd.h в ULWnd.cpp
+	4 функция 
+		CULWnd::SetClassLong(int nIndex,LONG dwNewLong) 
+		заменена на 
+		CULWnd::SetClassLongPtr(int nIndex,LONG dwNewLong)
+	5 исправлена ошибка в CULDC::DeleteDC. ранее не происходило удаления контекста
+	6 ULListCtrlEx.h включен в ULControls.h
+	7 в BOOL CULListCtrlEx::Attach(HWND hWnd) добалена генерация посылки сообщения WM_MEASUREITEM
+	8 ULListCtrlEx::CItemText теперь невмещающийся текст заканчивает точками
+	9 в ULListCtrlEx::IItemObject добавлен виртуальный деструктор, а в деструкторы унаследующие этот интерфей добавлено уничтожение клиентских контролов
+	10 если ULListCtrlEx::CItemComboBox disable, то он не появляется
+	11 перегружена в protected CULListCtrlEx::SetItemData
+	12 добавлена LRESULT CULPropSheet::OnDestroy(WPARAM,LPARAM) для очистки полей класса CULPropSheet при уничтожении окна
+
+2.3.4 <03.02.2009> 
+	1 исправлена CULProfileReg::GetProfileString. неверно указывался размер буфера для чтения
+	2 добавлены
+		BOOL CULProfileReg::WriteProfileBinary(LPCTSTR pcszSection,
+			LPCTSTR pcszEntry,void* pValue,DWORD dwSizeVal)
+		BOOL CULProfileReg::GetProfileBinary(LPCTSTR pcszSection,
+			 LPCTSTR pcszEntry, void* pValue,DWORD* lpdwValLen);
+		void CULFontDlg::SetLogFont(LOGFONT& lf);
+	3 изменена CULFontDlg::GetLogFont
+	4 добавлен класс иконки в трее ULOther::СULTrayIcon
+	5 TCHAR* -> LPCTSTR
+2.3.5 <17.04.2009> 
+	1 в CULHyperLink::CreateHyperLink иправлена ошибка копирования url
+	2  добавлены пространство имён ULProperty классов свойств 
+	3 добавлены свойства
+		ULWnds::CULWnd::m_propStyle
+		ULWnds::CULWnd::m_propStyleEx
+	4 исправлен CULStrT::operator=
+	5 добавлена функция 
+		ULGDI::ULDC::CULDC::SetROP2
+	6 добавлен класс слайдера(trackbar)
+		ULWnds::ULControls::CULSlider
+	7 исправлена CULQueueThread::Create, там исключено использование  CreateThread
+2.3.6 <18.08.2009> 
+	1 обновлены подключения хедеров
+	2 добавлена CULBitmap::CreateMappedBitmap
+	3 добавлена ULLibPrj2008 для сборки в 2008й студии
+	4 исправлена CULButton::SetImage, ошибка в посылке не того сообщения
+	5 добавлено CULProgressBar
+	6 ULLibPrj -> ULLibPrj2005 для сборки в 2005й
+	7 добавлены свойства 	CULWnd::propStyle,propStyleEx,propLeft,propTop,propWidth,propHeight,propVisible,propEnable
+	8 исправлено в CULEdit::OnDropFiles отсутсвовала DragFinish, что приводило к утечке
+2.3.7 
+	<28.09.2009> 
+	[FIXED] в 2008й студии неверно устанавливался размер структуры REBARBANDINFO из-за отсутствия определения макроса _WIN32_IE  
+	<31.10.2009> 
+	[ADDED] CULFolderDlg
+	<29.11.2009> 
+	[FIXED] у CULSplitter при отключенной возможности изменять размер курсор принимает нормальное состояние
+	[ADDED] CULSplitter::propResize
