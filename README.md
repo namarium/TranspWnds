@@ -2,7 +2,7 @@
 To build "TranspWnds" https://code.google.com/archive/p/transpwnds/
 
 ## このリポジトリについて
-オープンソースのフリーソフト「TranspWnds」をビルドするためのリポジトリです.  
+オープンソースのフリーソフト「TranspWnds」をビルドするためのプロジェクトです.  
 
 下記の都合で、公開されているソースがそのままでは扱いづらいので整備します.
 - 文字コードが「Cyrillic(Windows 1251)」
