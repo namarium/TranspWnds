@@ -2,26 +2,26 @@
 To build "TranspWnds" https://code.google.com/archive/p/transpwnds/
 
 ## このリポジトリについて
-オープンソースのフリーソフト「TranspWnds」をビルドするためのプロジェクトです.  
+オープンソースのフリーソフト「TranspWnds」をビルドするためのプロジェクトです。  
 
-下記の都合で、公開されているソースがそのままでは扱いづらいので整備します.
+下記の都合で、公開されているソースがそのままでは扱いづらいので整備します。
 - 文字コードが「Cyrillic(Windows 1251)」
-  - → 「UTF-8」に変換します.
+  - → 「UTF-8」に変換します。
 - 「ULLib」が別管理
-  - → 同梱します.
+  - → 同梱します。
 
 ## ビルド環境
 - Visual Studio 2015 
 - x86(Win32) 構成のみ
-  - x64 向けにビルドするには、「ULLib」を含めて修正が必要になります.
+  - x64 向けにビルドするには、「ULLib」を含めて修正が必要になります。
 
 ## バージョン
-※ ビルドのために一部修正しています.
+※ ビルドのために一部修正しています。
 - transpwnds: 1.4.1
 - ullib: 2.3.7
 
 ## ライセンス
-「TranspWnds」「ULLib」共に「LGPL-3.0」です.  
+「TranspWnds」「ULLib」共に「LGPL-3.0」です。  
 
 # リンク
 - transpwnds: https://code.google.com/archive/p/transpwnds/
