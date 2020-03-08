@@ -14,6 +14,7 @@ To build "TranspWnds" https://code.google.com/archive/p/transpwnds/
 - Visual Studio 2015 
 - x86(Win32) 構成のみ
   - x64 向けにビルドするには、「ULLib」を含めて修正が必要になります。
+  - 「Release - x86」構成のビルド成果物は「Dist」フォルダにコピーされます。
 
 ## バージョン
 ※ ビルドのために一部修正しています。
