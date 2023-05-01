@@ -23,6 +23,7 @@ To build "TranspWnds" https://code.google.com/archive/p/transpwnds/
 
 ## ライセンス
 「TranspWnds」「ULLib」共に「LGPL-3.0」です。  
+https://www.gnu.org/licenses/lgpl-3.0.html
 
 # リンク
 - transpwnds: https://code.google.com/archive/p/transpwnds/
